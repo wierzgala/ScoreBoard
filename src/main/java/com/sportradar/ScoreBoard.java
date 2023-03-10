@@ -23,10 +23,13 @@ public class ScoreBoard {
 
     /**
      * Updates a score for a game
-     * @param hostTeamScore the score of hosts
+     * @param hostTeam A name of a host team
+     * @param hostTeamScore the score of hostT
+     * @param guestTeam A name of the guestTeam
      * @param guestTeamScore the score of guests
      */
-    public void updateScore (int hostTeamScore, int guestTeamScore) {
+    public void updateScore (String hostTeam, int hostTeamScore,
+                             String guestTeam, int guestTeamScore) {
 
     }
 
