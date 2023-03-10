@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Iterator;
 
-public class GameTest {
+public class ScoreBoardTest {
     private static final String Mexico = "Mexico";
     private static final String Canada = "Canada";
     private static final String Spain = "Spain";
@@ -34,6 +34,16 @@ public class GameTest {
         Assert.assertEquals(0, sb.getGamesSummary().size());
     }
 
+    @Test
+    public void testStartGame() {
+        ScoreBoard sb = new ScoreBoard();
+        Assert.assertTrue(sb.startGame(Mexico, Argentina));
+        Assert.assertEquals(1, sb.getGamesSummary().size());
+        Assert.assertFalse(sb.startGame(Mexico, Argentina));
+        Assert.assertEquals(1, sb.getGamesSummary().size());
+
+    }
+
     @Test (expected = NullPointerException.class)
     public void testNullHostName () {
         ScoreBoard sb = new ScoreBoard();
@@ -47,7 +57,32 @@ public class GameTest {
     }
 
     @Test
-    public void testInstructionScenario() {
+    public void testFinishGame() {
+        ScoreBoard sb = new ScoreBoard();
+        sb.startGame(Mexico, Argentina);
+        sb.startGame(Germany, France);
+        Assert.assertEquals(2, sb.getGamesSummary().size());
+        Assert.assertTrue(sb.finishGame(Mexico, Argentina));
+        Assert.assertEquals(1, sb.getGamesSummary().size());
+        Assert.assertFalse(sb.finishGame(Mexico, Argentina));
+    }
+
+    @Test
+    public void testUpdateScore() {
+        ScoreBoard sb = new ScoreBoard();
+        sb.startGame(Mexico, Argentina);
+        Assert.assertTrue(sb.updateScore(Mexico, 0, Argentina, 1));
+        Game g = sb.getGamesSummary().get(0);
+        Assert.assertEquals(0, g.hostTeamScore);
+        Assert.assertEquals(1, g.guestTeamScore);
+
+        Assert.assertFalse(sb.updateScore(Mexico, 0, Germany, 10));
+        Assert.assertEquals(1, sb.getGamesSummary().size());
+
+    }
+
+    @Test
+    public void testExampleScenario() {
         ScoreBoard scoreBoard = new ScoreBoard();
         scoreBoard.startGame(Mexico, Canada);
         scoreBoard.startGame(Spain, Brazil);
