@@ -42,8 +42,10 @@ public class ScoreBoard {
                 iterator();
         if (it.hasNext()) {
             Game g = it.next();
-            g.hostTeamScore = hostTeamScore;
-            g.guestTeamScore = guestTeamScore;
+            synchronized (g) {
+                g.hostTeamScore = hostTeamScore;
+                g.guestTeamScore = guestTeamScore;
+            }
             return true;
         } else {
             return false;

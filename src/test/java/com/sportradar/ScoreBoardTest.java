@@ -56,6 +56,12 @@ public class ScoreBoardTest {
         sb.startGame(Argentina, null);
     }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void testSameGuestAndHostName () {
+        ScoreBoard sb = new ScoreBoard();
+        sb.startGame(Argentina, Argentina);
+    }
+
     @Test
     public void testFinishGame() {
         ScoreBoard sb = new ScoreBoard();

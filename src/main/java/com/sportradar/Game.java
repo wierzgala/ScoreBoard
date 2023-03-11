@@ -19,10 +19,13 @@ public class Game {
      * @param guestTeam A name of the guest team
      * @param start A start time of the game. Set to new Date() if null.
      * @throws NullPointerException when either of the names is null
+     * @throws IllegalArgumentException when hostTeam.equals(guestTeam)
      */
-    public Game(String hostTeam, String guestTeam, Date start) {
+    Game(String hostTeam, String guestTeam, Date start) {
         if (hostTeam == null || guestTeam == null)
             throw new NullPointerException("Name of the team cannot null!!");
+        if (hostTeam.equals(guestTeam))
+            throw new IllegalArgumentException("A team cannot play with itself");
         this.hostTeam = hostTeam;
         this.guestTeam = guestTeam;
         this.start = Objects.requireNonNullElseGet(start, Date::new);
@@ -39,5 +42,25 @@ public class Game {
     @Override
     public int hashCode() {
         return Objects.hash(hostTeam, guestTeam);
+    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public String getHostTeam() {
+        return hostTeam;
+    }
+
+    public String getGuestTeam() {
+        return guestTeam;
+    }
+
+    public int getHostTeamScore() {
+        return hostTeamScore;
+    }
+
+    public int getGuestTeamScore() {
+        return guestTeamScore;
     }
 }
