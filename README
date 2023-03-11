@@ -1,0 +1,41 @@
+DESCRIPTION
+The ScoreBoard is a thread safe implementation of a simple score board.
+It allows to create a game on the ScoreBoard, update it's score and finish it.
+ScoreBoard has a method for providing a sorted list of running games and their results.
+
+Limitations:
+    - host team name and quest team name need to be provided for starting the game. Neither of it can be null
+    - host team name cannot be the same as guest team name (a team cannot play a game with itself)
+    - IMPORTANT: when starting a game there is no verification if the specified teams aren't part of any running games,
+      hence it is possible to create many running games for the same team.
+
+BUILD INFO
+ScoreBoard was prepared to be distributed as a java library (.jar)
+Project can be build using maven with standard mvn clean install
+
+TESTING
+The unit tests are implemented with JUnit.
+The test coverage report is generated during build with Jacoco and can be viewed in target/site
+
+LICENSING
+This software is distributed on MIT License
+
+Copyright (c) 2023 Jakub Wierzgała (wierzgala@gmail.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
