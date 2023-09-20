@@ -124,4 +124,14 @@ public class ScoreBoardTest {
         Assert.assertTrue(Germany.equals(g.hostTeam) && France.equals(g.guestTeam)
                 && g.hostTeamScore == 2 && g.guestTeamScore == 2);
     }
+
+    @Test
+    public void testOneTeamTwoMatches() {
+        ScoreBoard scoreBoard = new ScoreBoard();
+        scoreBoard.startGame(Mexico, Canada);
+        scoreBoard.startGame(Mexico, Brazil);
+        Assert.assertEquals(scoreBoard.getGamesSummary().size(), 2);
+    }
+
+
 }

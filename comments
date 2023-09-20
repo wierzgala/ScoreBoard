@@ -1,0 +1,40 @@
+
+- no TDD, no incremental delivery
+Debatable. Tests were created before implementation of the Scoreboard. Method signatures (interface) were designed before tests.
+
+- spaghetti tests
+I need some elaboration on that.
+
+- tests leveraging package private visibility of Game fields
+This is a topic for discussion.
+
+- getters in Game not covered by tests
+Agree. A matter of local dev culture if trivial code should be tested i.e. separate tests for getters.
+
+- start date constructor parameter not required (present only for sake of tests)
+Constructor is package private, so a fact that it has this additional parameter as a convenience feature
+is a part of implementation and doesn't affect usability.
+
+- using NullPointerException instead of custom Exception for validation
+Using NullPointerException looks very reasonable here since the exception is triggered by passing null value
+where it is not allowed. The usage of NullPointerException here is in line with its contract.
+Similar applies to usage of IllegalArgumentException.
+This is a topic for discussion.
+
+- README says: "when starting a game there is no verification if the specified teams aren't part of any running games,
+      hence it is possible to create many running games for the same team."
+  However, implementation of the score board prevents this (using Set and implements equals)
+Implementation doesn't prevent that the same team (i.e. Mexico) can be part of 2 games at the same time,
+with 2 different opponents
+
+- thread safety implemented by synchronization instead of immutability
+This is a topic for discussion
+
+- returning boolean as indication of "success"
+This is a topic for discussion
+
+- 4 parameters of updateScore method could be replaced by better model
+This is a topic for discussion
+
+- not self-contained repository
+I need some elaboration on that.
